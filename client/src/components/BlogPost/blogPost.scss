@@ -1,0 +1,193 @@
+/* src/components/Masonry1/Post.scss */
+
+.post {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.standard-post {
+  overflow: hidden;
+}
+/* Stylizacja dla StandardPost */
+.standard-post img {
+  width: 100%;
+  height: 100%;
+  /* Zachowuje proporcje layoutu */
+  object-fit: cover;
+}
+
+.wrapper {
+  position: absolute;
+  bottom: 0px;
+  width: 350px;
+  height: 150px;
+  // background: url("../../../public/images/Subtract.svg") no-repeat bottom left;
+  // background-size:contain;
+}
+
+.standard-post .post-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+
+  .cat {
+    font-family: "Quicksand", serif;
+    font-weight: 200;
+    font-size: 16px;
+    display: flex;
+    gap: 15px;
+  }
+}
+
+.standard-post h2 {
+  font-size: 22px;
+  color: #000000;
+  margin: 0;
+  font-family: "Quicksand", serif;
+  font-weight: 200;
+
+  &:hover {
+    text-decoration: underline; /* Podkreślenie na hover */
+  }
+}
+
+/* Stylizacja dla TextPost */
+.text-post {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+
+  clip-path: polygon(0 0, calc(100% - 80px) 0, 100% 80px, 100% 100%, 0 100%);
+}
+
+.text-post .post-content {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 20px;
+}
+
+.text-post h2 {
+  width: 100%;
+  font-size: 2.5rem;
+  color: #000000;
+  font-family: "Quicksand", serif;
+  font-weight: 200;
+  &:hover {
+    text-decoration: underline; /* Podkreślenie na hover */
+  }
+}
+
+.text-post p {
+  font-size: 22px;
+  font-family: "Quicksand", serif;
+  font-weight: 200;
+  color: #000000;
+}
+
+/* Stylizacja dla CategoriesPost */
+.categories-post {
+  background-color: #ffc0cd;
+  /* Delikatne tło dla listy kategorii */
+  height: 100%;
+  display: flex;
+}
+.sticky-categories {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff; /* Opcjonalne tło */
+}
+
+.categories-buttons {
+  display: flex;
+
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.category-button {
+  background-color: #ddfbc7;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 22px;
+  margin: 5px;
+  font-size: 1.2rem;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.category-button:hover {
+  background-color: #d5d5d5;
+  color: #333;
+}
+
+/* Opcjonalne dodatkowe style */
+.category-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.corner-wrapper {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 80px;
+  height: 80px;
+}
+
+.corner-square {
+  position: absolute;
+  // top: 0px;
+  // left: 0px;
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  border-bottom-left-radius: 60px;
+  // border-right: none;
+  // border-top: none;
+  // transform: translate(-100%);
+  z-index: 10;
+}
+
+.corner-btn-large {
+  position: absolute;
+  top: 5px;
+  /* w samym rogu */
+  right: 5px;
+  /* w samym rogu */
+  // transform: translate(-100%, 100%);
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffba;
+  /* wypełnienie */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.corner-btn-large .corner-icon {
+  /* styl ikonki, np. +, pędzel, itp. */
+  font-size: 2rem;
+  color: #666;
+}

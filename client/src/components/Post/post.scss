@@ -1,0 +1,228 @@
+// /* src/components/Masonry1/Post.scss */
+
+// .post {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+//   overflow: hidden;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+
+// /* Stylizacja dla StandardPost */
+// .standard-post img {
+//   width: 100%;
+//   height: 100%;
+//   /* Zachowuje proporcje layoutu */
+//   object-fit: cover;
+// }
+
+// .wrapper{
+//   position: absolute;
+//   bottom: -1px;
+//   width: 350px;
+//   height: 150px;
+//   // background: url("../../../public/images/Subtract.svg") no-repeat bottom left;
+//   // background-size:contain;
+// }
+
+// .standard-post .post-content {
+//   position: absolute;
+//   bottom: 20px;
+//   left: 20px;
+//   width: 70%;
+//   display: flex;
+//   flex-direction: column;
+  
+
+//   .cat{
+//     font-family: "Quicksand", serif;
+//     font-weight: 200;
+//     font-size: 16px;
+//     display: flex;
+//     gap: 15px;
+    
+//   }
+// }
+
+// .standard-post h2 {
+//   font-size: 22px;
+//   color: #e8a1eb;
+//   margin: 0;
+//   font-family: "Quicksand", serif;
+//   font-weight: 300;
+
+// }
+
+// /* Stylizacja dla TextPost */
+// .text-post {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   padding: 0;
+//   height: 100%;
+//   /* Cały dostępny obszar jest zajęty przez tło i zawartość */
+// }
+
+// .text-post .post-content {
+//   position: absolute;
+//   bottom: 0px;
+//   left: 0px;
+//   padding: 20px;
+
+// }
+
+// .text-post h2 {
+//   width: 100%;
+//   font-size: 2.5rem;
+//   color: #000000;
+//   font-family: "Quicksand", serif;
+//   font-weight: 200;
+
+// }
+
+// .text-post p {
+//   font-size: 22px;
+//   font-family: "Quicksand", serif;
+//   font-weight: 200;
+//   color: #000000;
+// }
+
+// /* Stylizacja dla CategoriesPost */
+// .categories-post {
+//   background-color: #ffc0cd;
+//   /* Delikatne tło dla listy kategorii */
+//   height: 100%;
+//   display: flex;
+
+// }
+
+
+
+// .categories-buttons {
+//   display: flex;
+
+//   padding: 20px;
+//   flex-wrap: wrap;
+//   justify-content: flex-start;
+// }
+
+// .category-button {
+//   background-color: #ddfbc7;
+//   border: none;
+//   border-radius: 15px;
+//   padding: 15px 22px;
+//   margin: 5px;
+//   font-size: 1.2rem;
+//   color: #555;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease, color 0.3s ease;
+// }
+
+// .category-button:hover {
+//   background-color: #d5d5d5;
+//   color: #333;
+// }
+
+// /* Opcjonalne dodatkowe style */
+// .category-button:focus {
+//   outline: none;
+//   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+// }
+
+// .corner-wrapper {
+//   position: absolute;
+//   top: 0px;
+//   right: 0px;
+
+//   /* transform: translate(50%, -50%); */
+// }
+
+// .corner-square {
+//   position: absolute;
+//   top: 0px;
+//   left: 0px;
+//   width: 80px;
+//   height: 80px;
+//   background-color: #ffffff;
+//   border-bottom-left-radius: 60px;
+//   transform: translate(-100%);
+
+//   z-index: 1;
+// }
+
+// .quarter-circle1 {
+//   position: absolute;
+//   top: -20px;
+//   right: 60px;
+//   /* wielkość kwadratu */
+//   width: 30px;
+//   height: 30px;
+
+//   /* grube obramowanie */
+//   border: 20px solid rgb(255, 255, 255);
+
+//   /* pełny łuk w lewym górnym rogu */
+//   border-top-right-radius: 100%;
+
+//   border-left: none;
+//   border-bottom: none;
+//   background: transparent;
+
+// }
+
+// .quarter-circle2 {
+//   position: absolute;
+//   top: 60px;
+//   right: -20px;
+//   /* wielkość kwadratu */
+//   width: 30px;
+//   height: 30px;
+
+//   /* grube obramowanie */
+//   border: 20px solid rgb(255, 255, 255);
+
+//   /* pełny łuk w lewym górnym rogu */
+//   border-top-right-radius: 100%;
+
+//   /* usuwamy obramowanie pozostałych krawędzi (prawa i dół),
+//        by została tylko pionowa, pozioma i łuk */
+//   border-left: none;
+//   border-bottom: none;
+
+//   /* tło przezroczyste lub jakie chcesz */
+//   background: transparent;
+
+//   /* przykładowe wyrównanie, jeśli to w jakimś kontenerze */
+//   display: block;
+// }
+
+// .corner-btn-large {
+//   position: absolute;
+//   top: 0px;
+//   /* w samym rogu */
+//   right: 0px;
+//   /* w samym rogu */
+//   // transform: translate(-100%, 100%); 
+
+//   width: 60px;
+//   height: 60px;
+
+//   border-radius: 50%;
+//   border: none;
+//   background-color: #FFFFBA;
+//   /* wypełnienie */
+
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+//   z-index: 2;
+// }
+
+// .corner-btn-large .corner-icon {
+//   /* styl ikonki, np. +, pędzel, itp. */
+//   font-size: 2rem;
+//   color: #666;
+// }

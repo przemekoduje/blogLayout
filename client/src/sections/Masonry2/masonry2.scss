@@ -1,0 +1,45 @@
+.masonry-grid-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.layout {
+  background: #ffffff;
+  transition: all 0.3s ease;
+
+}
+
+.grid-item {
+  // background: #fff;
+  // border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .react-resizable-handle {
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    bottom: 0;
+    right: 0;
+    // background: rgba(0, 0, 0, 0.3);
+    cursor: se-resize;
+    // border-radius: 0 0 18px 0;
+  }
+
+  &.wide {
+    grid-column: span 2;
+  }
+
+  &.tall {
+    grid-row: span 2;
+  }
+
+}
