@@ -10,7 +10,7 @@
   align-items: flex-start;
   z-index: 1000;
   overflow-y: auto;
-  
+
 }
 
 .popup-cont {
@@ -22,8 +22,9 @@
   max-width: 1024px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   position: relative;
-  animation: popup-bounce 0.5s ease-in-out; /* Efekt animacji */
- 
+  animation: popup-bounce 0.5s ease-in-out;
+  /* Efekt animacji */
+
 
   .close-button {
     position: absolute;
@@ -68,12 +69,15 @@
     z-index: 3;
   }
 
+  
   p {
     font-size: 1rem;
+    font-family: "Quicksand", serif;
     color: #000000;
   }
 
   .post-categories {
+
     position: relative;
     margin-left: 385px;
     margin-bottom: 27px;
@@ -88,47 +92,61 @@
     }
   }
 
-  .popup-content2{
+  .popup-content2 {
     margin-left: 385px;
-    h2, h3 {
-        margin-bottom: 10px;
-        font-weight: bold;
-      }
-    
-      p {
-        margin-bottom: 15px;
-        line-height: 1.6;
-      }
-    
-      ul {
-        list-style: disc;
-        margin-left: 20px;
-        margin-bottom: 15px;
-      }
-    
-      img {
-        max-width: 100%;
-        height: auto;
-        margin: 20px 0;
-      }
+
+    h2,
+    h3 {
+      margin-bottom: 10px;
+      font-family: "Quicksand", serif;
+      font-weight: 5300;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-family: "Quicksand", serif;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: 20px;
+      margin-bottom: 15px;
+      font-family: "Quicksand", serif;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+    }
   }
 }
 
 /* Definicja animacji */
 @keyframes popup-bounce {
   0% {
-    transform: scale(0.7); /* Start od mniejszej skali */
-    opacity: 0; /* Całkowicie niewidoczne */
+    transform: scale(0.7);
+    /* Start od mniejszej skali */
+    opacity: 0;
+    /* Całkowicie niewidoczne */
   }
+
   50% {
-    transform: scale(1.02); /* Lekko powiększone */
-    opacity: 1; /* Pełna widoczność */
+    transform: scale(1.02);
+    /* Lekko powiększone */
+    opacity: 1;
+    /* Pełna widoczność */
   }
+
   70% {
-    transform: scale(0.98); /* Minimalny ruch "powrotu" */
+    transform: scale(0.98);
+    /* Minimalny ruch "powrotu" */
   }
+
   100% {
-    transform: scale(1); /* Powrót do pełnej skali */
+    transform: scale(1);
+    /* Powrót do pełnej skali */
   }
 }
 
@@ -138,6 +156,7 @@
     transform: scale(1);
     opacity: 1;
   }
+
   100% {
     transform: scale(0.7);
     opacity: 0;
@@ -145,5 +164,6 @@
 }
 
 .popup-hide {
-  animation: popup-hide 0.4s ease-out forwards; /* forwards zapewnia utrzymanie stanu końcowego */
+  animation: popup-hide 0.4s ease-out forwards;
+  /* forwards zapewnia utrzymanie stanu końcowego */
 }

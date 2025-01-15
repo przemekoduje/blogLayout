@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./adminPanel.scss";
+import Quill from "quill";
+import "quill/dist/quill.snow.css";
 
 export default function AdminPanel() {
+  const editorRef = useRef(null);
+  const quillRef = useRef(null);
+
   const [posts, setPosts] = useState([]);
   const [form, setForm] = useState({
     title: "",
@@ -27,7 +32,44 @@ export default function AdminPanel() {
       w: post.w,
       h: post.h,
     });
+
+    // Ustaw zawartość edytora Quill
+    if (quillRef.current) {
+      quillRef.current.root.innerHTML = post.content2 || "";
+    }
   };
+
+
+
+  useEffect(() => {
+    if (editorRef.current && !quillRef.current) {
+      const quill = new Quill(editorRef.current, {
+        theme: "snow",
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, false] }],
+            ["bold", "italic", "underline"],
+            ["link", "image"],
+          ],
+        },
+      });
+
+      quillRef.current = quill;
+
+      quill.on("text-change", () => {
+        setForm((prevForm) => ({
+          ...prevForm,
+          content2: quill.root.innerHTML,
+        }));
+      });
+    }
+
+    return () => {
+      if (quillRef.current) {
+        quillRef.current = null; // Usuń odniesienie do instancji Quill
+      }
+    };
+  }, []);
 
   useEffect(() => {
     // Pobierz istniejące wpisy
@@ -65,16 +107,16 @@ export default function AdminPanel() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const url = editingPost
       ? `http://localhost:5001/api/posts/${editingPost._id}`
       : "http://localhost:5001/api/posts";
-  
+
     const method = editingPost ? "PUT" : "POST";
-  
+
     try {
       let response;
-  
+
       if (form.src) {
         // Użycie FormData, gdy przesyłamy plik
         const formData = new FormData();
@@ -86,7 +128,7 @@ export default function AdminPanel() {
         formData.append("w", form.w);
         formData.append("h", form.h);
         formData.append("src", form.src);
-  
+
         response = await fetch(url, {
           method,
           body: formData,
@@ -109,10 +151,10 @@ export default function AdminPanel() {
           }),
         });
       }
-  
+
       if (response.ok) {
         const updatedOrNewPost = await response.json();
-  
+
         if (editingPost) {
           // Aktualizacja istniejącego posta
           setPosts((prevPosts) =>
@@ -124,7 +166,7 @@ export default function AdminPanel() {
           // Dodanie nowego posta
           setPosts((prevPosts) => [...prevPosts, updatedOrNewPost]);
         }
-  
+
         // Reset formularza
         setForm({
           title: "",
@@ -136,7 +178,12 @@ export default function AdminPanel() {
           w: 1,
           h: 1,
         });
-  
+
+        // Reset Quill edytora
+        if (quillRef.current) {
+          quillRef.current.root.innerHTML = "";
+        }
+
         setEditingPost(null); // Wyjście z trybu edycji
       } else {
         console.error("Błąd podczas zapisu posta.");
@@ -145,7 +192,7 @@ export default function AdminPanel() {
       console.error("Błąd połączenia z serwerem:", error);
     }
   };
-  
+
 
   return (
     <div className="admin-panel">
@@ -200,10 +247,16 @@ export default function AdminPanel() {
           </div>
           <div>
             <label>Treść:</label>
-            <textarea
+            <div
+              id="editor"
+              ref={editorRef}
+            // value={form.content2}
+            // onChange={(e) => setForm({ ...form, content2: e.target.value })}
+            ></div>
+            {/* <textarea
               value={form.content2}
               onChange={(e) => setForm({ ...form, content2: e.target.value })}
-            />
+            /> */}
           </div>
           <div>
             <label>Kategorie:</label>
@@ -242,12 +295,17 @@ export default function AdminPanel() {
                 setForm({
                   title: "",
                   content: "",
+                  content2: "",
                   categories: "",
                   src: null,
                   type: "StandardPost",
                   w: 1,
                   h: 1,
                 }); // Reset formularza
+                // Reset zawartości edytora Quill
+                if (quillRef.current) {
+                  quillRef.current.root.innerHTML = ""; // Wyczyść treść edytora
+                }
               }}
             >
               Anuluj
