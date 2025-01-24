@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "./adminPanel.scss";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
+import ImageResize from "quill-image-resize"; // Import modułu
+
+Quill.register("modules/imageResize", ImageResize);
 
 export default function AdminPanel() {
   const editorRef = useRef(null);
@@ -39,23 +42,62 @@ export default function AdminPanel() {
     }
   };
 
-
-
   useEffect(() => {
     if (editorRef.current && !quillRef.current) {
       const quill = new Quill(editorRef.current, {
         theme: "snow",
         modules: {
-          toolbar: [
-            [{ header: [1, 2, false] }],
-            ["bold", "italic", "underline"],
-            ["link", "image"],
-          ],
+          toolbar: {
+            container: [
+              [{ header: [1, 2, 3, 4, false] }],
+              ["bold", "italic", "underline", "strike"],
+              [{ list: "ordered" }, { list: "bullet" }],
+              [{ align: [] }],
+              [{ color: [] }, { background: [] }],
+              ["blockquote", "code-block"],
+              ["link", "image", "video"],
+              ["clean"],
+            ],
+            imageResize: {
+                modules: ["Resize", "DisplaySize", "Toolbar"], // Moduły do zmiany rozmiaru i wyświetlania
+              },
+            handlers: {
+              image: function () {
+                const input = document.createElement("input");
+                input.setAttribute("type", "file");
+                input.setAttribute("accept", "image/*");
+                input.click();
+  
+                input.onchange = async () => {
+                  const file = input.files[0];
+                  if (file) {
+                    const formData = new FormData();
+                    formData.append("image", file);
+  
+                    // Prześlij obraz na serwer
+                    try {
+                      const response = await fetch("http://localhost:5001/api/upload", {
+                        method: "POST",
+                        body: formData,
+                      });
+                      const data = await response.json();
+  
+                      // Wstaw URL obrazu do edytora
+                      const range = quill.getSelection();
+                      quill.insertEmbed(range.index, "image", data.imageUrl);
+                    } catch (error) {
+                      console.error("Błąd przesyłania obrazu:", error);
+                    }
+                  }
+                };
+              },
+            },
+          },
         },
       });
-
+  
       quillRef.current = quill;
-
+  
       quill.on("text-change", () => {
         setForm((prevForm) => ({
           ...prevForm,
@@ -63,13 +105,8 @@ export default function AdminPanel() {
         }));
       });
     }
-
-    return () => {
-      if (quillRef.current) {
-        quillRef.current = null; // Usuń odniesienie do instancji Quill
-      }
-    };
   }, []);
+  
 
   useEffect(() => {
     // Pobierz istniejące wpisy
@@ -101,7 +138,10 @@ export default function AdminPanel() {
         console.error("Błąd podczas usuwania posta.");
       }
     } catch (error) {
-      console.error("Błąd połączenia z serwerem podczas usuwania posta:", error);
+      console.error(
+        "Błąd połączenia z serwerem podczas usuwania posta:",
+        error
+      );
     }
   };
 
@@ -193,7 +233,6 @@ export default function AdminPanel() {
     }
   };
 
-
   return (
     <div className="admin-panel">
       <h1>Panel Administracyjny</h1>
@@ -250,8 +289,8 @@ export default function AdminPanel() {
             <div
               id="editor"
               ref={editorRef}
-            // value={form.content2}
-            // onChange={(e) => setForm({ ...form, content2: e.target.value })}
+              // value={form.content2}
+              // onChange={(e) => setForm({ ...form, content2: e.target.value })}
             ></div>
             {/* <textarea
               value={form.content2}

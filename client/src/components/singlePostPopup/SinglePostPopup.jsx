@@ -47,11 +47,11 @@ export default function SinglePostPopup({ post, onClose }) {
           />
         )}
         {/* Nagłówek  */}
-        {post.content && (
+        {/* {post.content && (
           <div className="popup-content">
             <p>{post.content}</p>
           </div>
-        )}
+        )} */}
 
         {/* Treść  */}
         {post.content2 && (

@@ -111,8 +111,7 @@ const initialPosts = [
     categories: ["Jedzenie", "Zdrowie"],
     date: "2024-10-18",
     borderRadius: "25px",
-    specialCorner: true
-    
+    specialCorner: true,
   },
   {
     id: "3",
@@ -126,7 +125,7 @@ const initialPosts = [
     categories: ["Podróże", "Styl życia"],
     date: "2024-12-10",
     borderRadius: "25px",
-    specialCorner: true
+    specialCorner: true,
   },
   {
     id: "4",
@@ -137,7 +136,7 @@ const initialPosts = [
     content:
       "Minimalizm to nie tylko trend, ale styl życia, który może przynieść wiele korzyści. Dowiedz się, jak wprowadzić minimalizm do swojej codzienności i czerpać z tego pełnię szczęścia.",
     type: "StandardPost",
-    categories: ["Styl życia", "Edukacja", "Podróże", "Zdrowie","Ekologia" ],
+    categories: ["Styl życia", "Edukacja", "Podróże", "Zdrowie", "Ekologia"],
     date: "2024-08-08",
     borderRadius: "25px",
   },
@@ -146,7 +145,14 @@ const initialPosts = [
     w: 1,
     h: 1,
     type: "CategoriesPost",
-    categories: ["Technologia", "Styl życia", "Edukacja", "Podróże", "Zdrowie","Ekologia"],
+    categories: [
+      "Technologia",
+      "Styl życia",
+      "Edukacja",
+      "Podróże",
+      "Zdrowie",
+      "Ekologia",
+    ],
     date: "2024-04-031",
     borderRadius: "25px",
   },
@@ -175,7 +181,6 @@ const initialPosts = [
     categories: ["Ekologia", "Styl życia"],
     date: "2024-08-05",
     borderRadius: "25px",
-    
   },
   {
     id: "8",
@@ -189,7 +194,7 @@ const initialPosts = [
     categories: ["Edukacja", "Finanse"],
     date: "2024-10-03",
     borderRadius: "25px",
-    specialCorner: true
+    specialCorner: true,
   },
   {
     id: "9",
@@ -199,6 +204,23 @@ const initialPosts = [
     title: "Fitness dla Każdego: Treningi, Które Możesz Zrobić w Domu",
     content:
       "Nie masz czasu na siłownię? Oto zestaw treningów, które możesz wykonać w domu, aby utrzymać formę i zdrowie bez wychodzenia z domu.",
+    content2: `
+    Dlaczego warto ćwiczyć w domu?
+    Treningi w domu to wygodny sposób na utrzymanie dobrej kondycji fizycznej bez potrzeby wychodzenia na siłownię. Możesz dostosować ćwiczenia do własnych potrzeb i harmonogramu, oszczędzając czas i pieniądze.
+    
+    Przykładowe ćwiczenia do wykonania w domu:
+    - Pompki: Wzmocnij mięśnie klatki piersiowej, ramion i tricepsów.
+    - Przysiady: Popraw kondycję mięśni nóg i pośladków.
+    - Plank: Wzmocnij mięśnie brzucha i pleców.
+    - Wykroki: Dopracuj mięśnie nóg i równowagę.
+    - Skakanka: Popraw wydolność serca i spalenie kalorii.
+    
+    Jak zacząć?
+    Przygotuj miejsce do ćwiczeń, zaopatrz się w matę i zacznij od krótkich sesji 10-15 minut dziennie. Stopniowo zwiększaj intensywność i czas treningów, pamiętając o rozgrzewce i rozciąganiu po treningu.
+    
+    Podsumowanie:
+    Ćwiczenia w domu to świetny sposób na poprawę zdrowia i samopoczucia. Wystarczy trochę motywacji i regularności, aby osiągnąć zauważalne efekty.
+  `,
     type: "StandardPost",
     categories: ["Zdrowie", "Sport"],
     date: "2024-07-17",

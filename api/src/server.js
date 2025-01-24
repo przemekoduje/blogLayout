@@ -183,6 +183,18 @@ app.delete("/api/posts/:id", async (req, res) => {
 });
 
 
+app.post("/api/upload", upload.single("image"), (req, res) => {
+  try {
+    const imageUrl = `http://localhost:5001/uploads/${req.file.filename}`;
+    res.status(200).json({ imageUrl });
+  } catch (error) {
+    res.status(500).json({ error: "Błąd podczas przesyłania obrazu" });
+  }
+});
+
+// Middleware do serwowania przesłanych obrazów
+app.use("/uploads", express.static("uploads"));
+
 
 // Uruchomienie serwera
 const PORT = process.env.PORT || 5001;

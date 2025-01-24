@@ -99,7 +99,7 @@
     h3 {
       margin-bottom: 10px;
       font-family: "Quicksand", serif;
-      font-weight: 5300;
+      font-weight: 600;
     }
 
     p {
@@ -109,11 +109,18 @@
     }
 
     ul {
-      list-style: disc;
-      margin-left: 20px;
+      // margin-left: 20px;
+      
+    }
+    ol {
+      // margin-left: 20px;
+      
+    }
+    li{
       margin-bottom: 15px;
       font-family: "Quicksand", serif;
     }
+
 
     img {
       max-width: 100%;
